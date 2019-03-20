@@ -4,6 +4,7 @@ import { Loader, Header, Image, Container, Grid, Divider, Button, Form, Segment,
 import { fetchCurrentUser, fetchChessData } from '../actions/User.js'
 import { connect } from 'react-redux'
 import '../App.css'
+import MatchMaking from './MatchMaking'
 
 class Queue extends Component {
 
@@ -40,18 +41,18 @@ class Queue extends Component {
   render() {
     document.title = "Autochess Ladder"
     return this.props.loggedIn && this.props.chessData ? (
-      <>
+      <Container>
         <h1>Queue</h1>
         <h2>Hello {this.props.user.displayName} </h2>
         <h3>ID: {this.props.user.id} </h3>
         <Image src={this.props.user.photos[2].value} size='large' wrapped/>
-        {this.getRank(this.props.chessData.info.mmr_level)}
-      </>
+        <MatchMaking getRank={this.getRank} />
+      </Container>
     ) : (
-        <>
+        <Container>
         <Loader size="massive" active inline="centered"/>
             {this.props.error ? <Redirect to="/login" /> : null}
-        </>
+        </Container>
     )
   }
 }
