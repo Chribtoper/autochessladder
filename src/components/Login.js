@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Redirect, Switch, withRouter, Link } fr
 import { Header, Image, Container, Grid, Divider, Button, Form, Segment, Message } from 'semantic-ui-react';
 import { connect } from 'react-redux'
 import WithAuth from '../hocs/WithAuth.js'
+import Style, { containerStyle, segmentStyle } from '../styles/Style.js'
 
 class Login extends Component {
   // state = {
@@ -20,13 +21,18 @@ class Login extends Component {
   render() {
     document.title = "Autochess Ladder"
     return (
-      <>
-        <Image href="http://localhost:3001/auth/steam" src={require('../images/steamlogo.png')} size='large'/>
-      </>
+      <Container style={containerStyle}>
+        <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle' relaxed='very' stackable>
+          <Grid.Column style={{ maxWidth: 450 }}>
+            <Segment style={segmentStyle} raised padded='very'> 
+              <Image verticalAlign='middle' href="http://localhost:3001/auth/steam" src={require('../images/steamlogo.png')} size='large'/>
+            </Segment>
+          </Grid.Column>
+        </Grid>
+      </Container>
     );
   }
 }
-// <Image onClick={()=>this.handleClick()} src='../images/steamlogo.png' size='large'/>
 
 const mapStateToProps = ({ UsersReducer: { loggedIn } }) => ({
   loggedIn
