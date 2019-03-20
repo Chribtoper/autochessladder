@@ -1,32 +1,23 @@
 import React, { Fragment, Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch, withRouter, Link } from 'react-router-dom'
-import { Header, Image, Container, Grid, Divider, Button, Form, Segment, Message } from 'semantic-ui-react';
-import axios from 'axios';
-import './App.css';
+import Login from './components/Login.js'
+import Queue from './components/Queue.js'
+
 
 class App extends Component {
-  state = {users: []}
-
-  componentDidMount() {
-
-  }
-
-  handleClick = () => {
-    axios.get(`http://localhost:8080/account`)
-      .then(r => {
-        debugger
-      })
-  }
-
   render() {
-    // <Button onClick={()=>this.handleClick()}>Sign In</Button>
+    document.title = "Autochess Ladder"
     return (
-      <>
-        <Button href='http://localhost:8080/auth/steam'>login</Button>
-        <Button onClick={()=>this.handleClick()}>Account</Button>
-      </>
-    );
+      <Fragment>
+        <Switch>
+          <Route exact path="/" render={() => <Redirect to="/queue" />} />
+          <Route exact path ="/login" component={Login} />
+          <Route exact path ="/queue" component={Queue} />
+        </Switch>
+      </Fragment>
+    )
+    }
   }
-}
 
-export default App;
+
+export default withRouter(App);

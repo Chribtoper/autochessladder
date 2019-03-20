@@ -23,6 +23,30 @@
   color: #61dafb;
 }
 
+.Pawn {
+  background-image: url('images/pawn.png');
+}
+
+.Knight {
+  background: url('./images/knight.png');
+}
+
+.Bishop {
+  background-image: url('images/bishop.png');
+}
+
+.Rook {
+  background-image: url('images/rook.png');
+}
+
+.King {
+  background-image: url('images/king.png');
+}
+
+.Queen {
+  background-image: url('images/queen.png');
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
