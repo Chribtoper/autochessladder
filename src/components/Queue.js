@@ -23,17 +23,17 @@ class Queue extends Component {
   getRank = (rank) => {
     switch (true) {
         case (rank < 10):
-        return `Pawn ${rank}`
+        return (<><Image src={require('../images/pawn.png')} size='large' wrapped/><span style={spanStyle}>{rank}</span></>)
         case (rank > 9 && rank < 19):
         return (<><Image src={require('../images/knight.png')} size='large' wrapped/><span style={spanStyle}>{rank-9}</span></>)
         case (rank > 18 && rank < 28):
-        return `Bishop ${rank-18}`
+        return (<><Image src={require('../images/bishop.png')} size='large' wrapped/><span style={spanStyle}>{rank-18}</span></>)
         case (rank > 27 && rank < 37):
-        return `Rook ${rank-27}`
+        return (<><Image src={require('../images/rook.png')} size='large' wrapped/><span style={spanStyle}>{rank-27}</span></>)
         case (rank === 37):
-        return 'King'
+        return (<><Image src={require('../images/king.png')} size='large' wrapped/></>)
         case (rank === 38):
-        return 'Queen'
+        return (<><Image src={require('../images/queen.png')} size='large' wrapped/></>)
     }
   }
 
